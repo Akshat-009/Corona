@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corona virus data </title>
+    <script>
+
+fetch('https://api.covid19api.com/summary')
+.then((data) => {
+    
+    return data.json();
+
+})
+.then((countrydata) => {
+     const name= countrydata.Countries[76].Country
+     const dead= countrydata.Countries[76].TotalDeaths
+     const active= countrydata.Countries[76].TotalConfirmed
+     const today= countrydata.Countries[76].NewConfirmed
+     const recovered= countrydata.Countries[76].TotalRecovered
+     const time =countrydata.Countries[76].Date
+     let final=""
+     for (var i=0;i<=9;i++){
+         final+=time[i]
+     }
+     
+    
+
+     document.getElementById('id').innerHTML= `Active Count of Corona Virus for ${name}`
+     document.getElementById('dead').innerHTML= dead
+     document.getElementById('active').innerHTML= active
+     document.getElementById('today').innerHTML= today
+     document.getElementById('recovered').innerHTML= recovered
+     document.getElementById('time').innerHTML= `Updated as on ${final}`
+
+     
+})
+
+
+    </script>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing: border-box;
+        font-family: 'Josefin Sans', sans-serif;
+        background-color:#e66767;
+    }
+    #id,#time{
+        text-align:center;
+        margin-top:23px;
+        color:white;
+    }
+    #time{margin-top:34px ;}
+    .container{
+        height:350px;
+        width:700px;
+        background-color: white;
+        position:absolute;
+        top:23%;
+        left:23%;
+        border:1px solid black;
+        border-radius:7px;
+        box-shadow:3px 3px 7px black;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:10px;
+    }
+    .dead{
+        background-color:#ff7675;
+        width:150px;
+        height:150px;
+        border:2px solid red;
+        opacity: 0.7;
+        border-radius:2px;
+        padding:10px;
+        box-shadow: 3px 3px 5px red;
+        transition: transform 300ms, box-shadow 300ms;
+    }
+    .dead:hover {
+        transform: scale(1.1);
+        box-shadow: 3px 3px 25px red;
+    }
+    .active{
+        background-color:#ffeaa7;
+        width:150px;
+        height:150px;
+        padding:10px;
+        border:2px solid yellow;
+        border-radius:2px;
+        opacity: 0.7;
+        box-shadow: 3px 3px 5px yellow;
+        transition: transform 500ms, box-shadow 300ms;
+        /* transition-timing-function:ease-in; */
+
+
+    }
+    .active:hover {
+        transform: scale(1.1);
+        box-shadow: 3px 3px 25px yellow;
+    }
+    .today{
+        background-color:#ffbe76;
+        width:150px;
+        height:150px;
+        border:2px solid orange;
+        opacity: 0.7;
+        border-radius:2px;
+        padding:10px;
+        box-shadow: 3px 3px 5px orange;
+        transition: transform 300ms, box-shadow 300ms;
+    }
+    .today:hover {
+        transform: scale(1.1);
+        box-shadow: 3px 3px 25px orange;
+    }
+    .recovered{
+        background-color:#6ab04c;
+        width:150px;
+        height:150px;
+        border:2px solid green;
+        opacity: 0.7;
+        border-radius:2px;
+        padding:10px;
+        box-shadow: 3px 3px 5px green;
+        transition: transform 300ms, box-shadow 300ms;
+    }
+    .recovered:hover {
+        transform: scale(1.1);
+        box-shadow: 3px 3px 25px green;
+    }
+    #dead,#active,#today,#recovered{
+        position: relative;
+        top: 35%;
+        left: -25%;
+        font-weight: bold;
+        font-size: 32px;
+       background-color:transparent;
+    }
+    
+</style>
+<body>
+    <h1 id="id"></h1>
+    <h2 id ="time"></h2>
+    <div class="container">
+    <div class="dead">No. of dead records:<span id = "dead"></span></div>
+    <div class="active">No. of active records:<span id ="active"></span></div>
+    <div class="today">No. of today records:<span id = "today"></span></div> 
+    <div class="recovered">No. of recovered records:<span id = "recovered"></span></div>   
+    </div>
+</body>
+</html>
