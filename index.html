@@ -50,19 +50,29 @@ fetch('https://api.covid19api.com/summary')
         font-family: 'Josefin Sans', sans-serif;
         background-color:#e66767;
     }
+    header{
+        
+        position:absolute;
+        top:5%;
+        left:50%;
+        width:100vw;
+        transform: translateX(-50%);
+         height:10vh;
+         text-align:center;
+        
+    }
     #id,#time{
-        text-align:center;
-        margin-top:23px;
         color:white;
     }
-    #time{margin-top:34px ;}
+    #time{margin-top:4px ;}
     .container{
-        height:350px;
-        width:700px;
-        background-color: white;
         position:absolute;
-        top:23%;
-        left:23%;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        height:30vh;
+        width:85vw;
+        background-color: white;
         border:1px solid black;
         border-radius:7px;
         box-shadow:3px 3px 7px black;
@@ -73,12 +83,13 @@ fetch('https://api.covid19api.com/summary')
     }
     .dead{
         background-color:#ff7675;
-        width:150px;
+        width:15vw;
         height:150px;
         border:2px solid red;
         opacity: 0.7;
         border-radius:2px;
-        padding:10px;
+        position:relative;
+        padding:2px;
         box-shadow: 3px 3px 5px red;
         transition: transform 300ms, box-shadow 300ms;
     }
@@ -88,8 +99,9 @@ fetch('https://api.covid19api.com/summary')
     }
     .active{
         background-color:#ffeaa7;
-        width:150px;
+        width:15vw;
         height:150px;
+        position:relative;
         padding:10px;
         border:2px solid yellow;
         border-radius:2px;
@@ -106,10 +118,11 @@ fetch('https://api.covid19api.com/summary')
     }
     .today{
         background-color:#ffbe76;
-        width:150px;
+        width:15vw;
         height:150px;
         border:2px solid orange;
         opacity: 0.7;
+        position:relative;
         border-radius:2px;
         padding:10px;
         box-shadow: 3px 3px 5px orange;
@@ -121,10 +134,11 @@ fetch('https://api.covid19api.com/summary')
     }
     .recovered{
         background-color:#6ab04c;
-        width:150px;
+        width:15vw;
         height:150px;
         border:2px solid green;
         opacity: 0.7;
+        position:relative;
         border-radius:2px;
         padding:10px;
         box-shadow: 3px 3px 5px green;
@@ -135,18 +149,48 @@ fetch('https://api.covid19api.com/summary')
         box-shadow: 3px 3px 25px green;
     }
     #dead,#active,#today,#recovered{
-        position: relative;
-        top: 35%;
-        left: -25%;
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
         font-weight: bold;
-        font-size: 32px;
+        font-size: 28px;
        background-color:transparent;
+    }
+    @media screen and (max-width:940px)
+    {
+        #dead,#active,#today,#recovered{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        font-weight: bold;
+        font-size: 16px;
+       background-color:transparent;
+    }
+
+    }
+    @media screen and (max-width: 460px) {
+        *{
+            font-size:10px;
+        }
+        #dead,#active,#today,#recovered{
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        font-weight: bold;
+        font-size: 12px;
+       background-color:transparent;
+    }
     }
     
 </style>
 <body>
+    <header>
     <h1 id="id"></h1>
     <h2 id ="time"></h2>
+</header>
     <div class="container">
     <div class="dead">No. of dead records:<span id = "dead"></span></div>
     <div class="active">No. of active records:<span id ="active"></span></div>
@@ -155,3 +199,4 @@ fetch('https://api.covid19api.com/summary')
     </div>
 </body>
 </html>
+
